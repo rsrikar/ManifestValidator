@@ -57,29 +57,29 @@ properties:
     properties:
       featured:
         type: object
-          properties:
-            database:
-              type: string
+        properties:
+          database:
+            type: string
             objects:
               type: array
               items:
                 type: object
-                  properties:
-                    name:
-                      type: string
-                    schema:
-                      type: string
-                    domain:
-                      enum:
-                        - DATABASE
-                        - SCHEMA
-                        - TABLE
-                        - VIEW
-                        - EXTERNAL_TABLE
-                        - MATERIALIZED_VIEW
-                        - DIRECTORY_TABLE
-                        - FUNCTION
-                        - COLUMN
+                properties:
+                  name:
+                    type: string
+                  schema:
+                    type: string
+                  domain:
+                    enum:
+                      - DATABASE
+                      - SCHEMA
+                      - TABLE
+                      - VIEW
+                      - EXTERNAL_TABLE
+                      - MATERIALIZED_VIEW
+                      - DIRECTORY_TABLE
+                      - FUNCTION
+                      - COLUMN
   business_needs:
     type: array
     items:
