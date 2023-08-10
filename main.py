@@ -143,13 +143,13 @@ usage_examples:
 data_dictionary:
   featured: 
     database: "db_another_NAME"
-      objects:
-        - schema: "DATA_DICTIONARY_API_SCHEMA_NAME"
-          domain: TABLE
-          name: "TABLE_ANOTHER_NAME"
-        - schema: "DATA_DICTIONARY_API_SCHEMA_NAME"
-          domain: TABLE
-          name: "DATA_DICTIONARY_API_TABLE_NAME"
+    objects:
+      - schema: "DATA_DICTIONARY_API_SCHEMA_NAME"
+        domain: TABLE
+        name: "TABLE_ANOTHER_NAME"
+      - schema: "DATA_DICTIONARY_API_SCHEMA_NAME"
+        domain: TABLE
+        name: "DATA_DICTIONARY_API_TABLE_NAME"
 business_needs:
   - name: "Data Quality and Cleansing"
     description: "Test listing for data cleansing"
