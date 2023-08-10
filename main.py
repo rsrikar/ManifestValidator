@@ -30,7 +30,7 @@ testing: ['this', 'is', 'a', 'bad', 'test']
 """
 
 try:
-  validate(yaml.load(bad_instance), yaml.load(schema))
+  validate(yaml.safe_load(bad_instance), yaml.load(schema))
 except Exception as e:
   st.write(str(e))
 
