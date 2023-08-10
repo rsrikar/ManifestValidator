@@ -1,6 +1,7 @@
 import streamlit as st
 import yaml
 from jsonschema import validate
+import json
 
 schema = """
 type: object
@@ -159,7 +160,10 @@ placeholder="Manifest to validate ...")
 
 try:
   validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
+  json_string = json.dumps(yaml.load(txt, Loader=SafeLoader))
   st.write("Valid manifest")
+  st.json(json_string)
 except Exception as e:
-  st.write("Inalid manifest")
+  st.write("Invalid manifest")
+  json_string = ""
   st.write(str(e))
