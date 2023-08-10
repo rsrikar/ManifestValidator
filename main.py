@@ -29,6 +29,16 @@ properties:
         type: string
 """
 
+
+txt = st.text_area('Manifest validator', '''
+title: "title1"
+subtitle: "sub title 1"
+description: "listing description"
+terms_of_service:
+  type: "OFFLINE"
+''')
+
+
 good_instance = """
 title: "title1"
 subtitle: "sub title 1"
@@ -37,13 +47,9 @@ terms_of_service:
   type: "OFFLINE"
 """
 
-bad_instance = """
-testing: ['this', 'is', 'a', 'bad', 'test']
-"""
-
 try:
   validate(yaml.safe_load(good_instance), yaml.safe_load(schema)) # passes
-  validate(yaml.safe_load(bad_instance), yaml.safe_load(schema))
+  validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
 except Exception as e:
   st.write(str(e))
 
