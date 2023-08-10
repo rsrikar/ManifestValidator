@@ -7,29 +7,42 @@ st.write('Hello World123')
 schema = """
 type: object
 properties:
-  testing:
-    type: array
-    items:
-      enum:
-        - this
-        - is
-        - a
-        - test
+  title:
+    type: string
+  subtitle:
+    type: string
+  description:
+    type: string
+  custom_contact:
+    type: string
+  profile:
+    type: string
+  terms_of_service:
+    type: object
+    properties:
+      type:
+        enum:
+          - STANDARD
+          - CUSTOM
+          - OFFLINE
+      link:
+        type: string
 """
 
 good_instance = """
-testing: ['this', 'is', 'a', 'test']
+title: "title1"
+subtitle: "sub title 1"
+description: "listing description"
+terms_of_service:
+  type: "OFFLINE"
 """
-
-validate(yaml.safe_load(good_instance), yaml.safe_load(schema)) # passes
-
-# Now let's try a bad instance...
 
 bad_instance = """
 testing: ['this', 'is', 'a', 'bad', 'test']
 """
 
 try:
+  validate(yaml.safe_load(good_instance), yaml.safe_load(schema)) # passes
   validate(yaml.safe_load(bad_instance), yaml.safe_load(schema))
 except Exception as e:
   st.write(str(e))
