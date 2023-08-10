@@ -21,7 +21,7 @@ good_instance = """
 testing: ['this', 'is', 'a', 'test']
 """
 
-validate(yaml.safe_load(good_instance), yaml.load(schema)) # passes
+validate(yaml.safe_load(good_instance), yaml.safe_load(schema)) # passes
 
 # Now let's try a bad instance...
 
@@ -30,7 +30,7 @@ testing: ['this', 'is', 'a', 'bad', 'test']
 """
 
 try:
-  validate(yaml.safe_load(bad_instance), yaml.load(schema))
+  validate(yaml.safe_load(bad_instance), yaml.safe_load(schema))
 except Exception as e:
   st.write(str(e))
 
