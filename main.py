@@ -80,6 +80,51 @@ properties:
                         - DIRECTORY_TABLE
                         - FUNCTION
                         - COLUMN
+  business_needs:
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          enum:
+            - 360-Degree Customer View
+            - Supply Chain
+            - Personalize Customer Experiences
+            - Inventory Management
+            - Accelerating Advertising Revenue
+            - Attribution Analysis
+            - Contact Data Enrichment
+            - Foot Traffic Analytics
+            - Audience Segmentation
+            - Sentiment Analysis
+            - ESG Investment Analysis
+            - Fundamental Analysis
+            - Quantitative Analysis
+            - Risk Analysis
+            - Fraud Remediation
+            - Customer Onboarding
+            - Identity Resolution
+            - Asset Valuation
+            - Economic Impact Analysis
+            - Demand Forecasting
+            - Population Health Management
+            - Real World Data (RWD)
+            - Location Planning
+            - Regulatory Reporting
+            - Subscriber Acquisition and Retention
+            - Life Sciences Commercialization
+            - Patient 360
+            - Blockchain Analysis
+            - Customer Acquisition
+            - Data Quality and Cleansing
+            - Location Data Enrichment
+            - Location Geocoding
+            - Machine Learning
+            - Market Analysis
+            - Pricing Analysis
+            - Audience Activation
+        description:
+          type: string
 """
 
 
@@ -105,6 +150,9 @@ data_dictionary:
         - schema: DATA_DICTIONARY_API_SCHEMA_NAME
           domain: TABLE
           name: DATA_DICTIONARY_API_TABLE_NAME
+business_needs:
+  - name: "Data Quality and Cleansing"
+    description: "Test listing for data cleansing"
 ''',
 height=500,
 placeholder="Manifest to validate ...")
