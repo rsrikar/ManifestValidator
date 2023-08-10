@@ -2,8 +2,6 @@ import streamlit as st
 import yaml
 from jsonschema import validate
 
-st.write('Hello World12')
-
 schema = """
 type: object
 properties:
@@ -108,10 +106,12 @@ data_dictionary:
           domain: TABLE
           name: DATA_DICTIONARY_API_TABLE_NAME
 ''',
-height=300)
+height=500,
+placeholder="Manifest to validate ...")
 
 try:
   validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
   st.write("Valid manifest")
 except Exception as e:
+  st.write("Inalid manifest")
   st.write(str(e))
