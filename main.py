@@ -60,7 +60,7 @@ properties:
       featured:
         type: object
           properties:
-            database
+            database:
               type: string
             objects:
               type: array
