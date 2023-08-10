@@ -160,7 +160,7 @@ placeholder="Manifest to validate ...")
 
 try:
   validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
-  json_string = json.dumps(yaml.load(txt, Loader=SafeLoader))
+  json_string = json.dumps(yaml.safe_load(txt))
   st.write("Valid manifest")
   st.json(json_string)
 except Exception as e:
