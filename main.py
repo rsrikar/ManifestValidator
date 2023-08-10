@@ -27,6 +27,22 @@ properties:
           - OFFLINE
       link:
         type: string
+  auto_fulfillment:
+    type: object
+    properties:
+      refresh_schedule:
+        type: string
+      refresh_type:
+        enum:
+          - FULL_DATABASE
+          - SUB_DATABASE
+  targets:
+    type: object
+    properties:
+      accounts:
+        type: array
+        items:
+          type: string
 """
 
 
@@ -36,28 +52,12 @@ subtitle: "sub title 1"
 description: "listing description"
 terms_of_service:
   type: "OFFLINE"
+targets:
+  accounts: ["Org1.Account1"]
 ''')
 
-
-good_instance = """
-title: "title1"
-subtitle: "sub title 1"
-description: "listing description"
-terms_of_service:
-  type: "OFFLINE"
-"""
-
 try:
-  validate(yaml.safe_load(good_instance), yaml.safe_load(schema)) # passes
   validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
+  st.write("Valid manifest")
 except Exception as e:
   st.write(str(e))
-
-# Fails with:
-# ValidationError: 'bad' is not one of ['this', 'is', 'a', 'test']
-#
-# Failed validating 'enum' in schema['properties']['testing']['items']:
-#     {'enum': ['this', 'is', 'a', 'test']}
-#
-# On instance['testing'][3]:
-#     'bad'
