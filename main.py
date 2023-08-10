@@ -107,7 +107,8 @@ data_dictionary:
         - schema: DATA_DICTIONARY_API_SCHEMA_NAME
           domain: TABLE
           name: DATA_DICTIONARY_API_TABLE_NAME
-''')
+''',
+height=300)
 
 try:
   validate(yaml.safe_load(txt), yaml.safe_load(schema)) # passes
