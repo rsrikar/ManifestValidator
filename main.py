@@ -21,7 +21,7 @@ good_instance = """
 testing: ['this', 'is', 'a', 'test']
 """
 
-validate(yaml.load(good_instance), yaml.load(schema)) # passes
+validate(yaml.safe_load(good_instance), yaml.load(schema)) # passes
 
 # Now let's try a bad instance...
 
