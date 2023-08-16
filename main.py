@@ -15,7 +15,7 @@ def displayValidateButton(col):
 
 st. set_page_config(layout="wide")
 
-st.header("Snowflake marketplace listing manifest validator")
+st.header("Snowflake listings manifest validator")
 
 col1, col2, col3 = st.columns([3,1,3])
 
