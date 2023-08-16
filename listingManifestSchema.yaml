@@ -1,0 +1,42 @@
+---
+title: str(max=110)
+subtitle: str(max=110, required=False)
+description: str(max=7500)
+custom_contact: str(required=False)
+profile: str(required=False)
+terms_of_service: include('terms_of_service')
+auto_fulfillment: include('auto_fulfillment', required=False)
+targets: include('targets')
+usage_examples: list(include('usage_example'), required=False)
+data_dictionary: include('data_dictionary', required=False)
+business_needs: list(include('business_need'), required=False)
+---
+terms_of_service:
+  type: enum('STANDARD', 'CUSTOM', 'OFFLINE')
+  link: str(required=False)
+---
+auto_fulfillment:
+  refresh_schedule: str()
+  refresh_type: enum('FULL_DATABASE', 'SUB_DATABASE')
+---
+targets:
+  accounts: list(str())
+---
+usage_example:
+  title: str(max=110)
+  description: str(max=300)
+  query: str(max=30000)
+---
+data_dictionary_object:
+  name: str()
+  schema: str()
+  domain: enum('DATABASE', 'SCHEMA', 'TABLE', 'VIEW', 'EXTERNAL_TABLE', 'MATERIALIZED_VIEW', 'DIRECTORY_TABLE', 'FUNCTION', 'COLUMN')
+---
+business_need:
+  name: enum('360-Degree Customer View','Supply Chain','Personalize Customer Experiences','Inventory Management','Accelerating Advertising Revenue','Attribution Analysis','Contact Data Enrichment','Foot Traffic Analytics','Audience Segmentation','Sentiment Analysis','ESG Investment Analysis','Fundamental Analysis','Quantitative Analysis','Risk Analysis','Fraud Remediation','Customer Onboarding','Identity Resolution','Asset Valuation','Economic Impact Analysis','Demand Forecasting','Population Health Management','Real World Data (RWD)','Location Planning','Regulatory Reporting','Subscriber Acquisition and Retention','Life Sciences Commercialization','Patient 360','Blockchain Analysis','Customer Acquisition','Data Quality and Cleansing','Location Data Enrichment','Location Geocoding','Machine Learning','Market Analysis','Pricing Analysis','Audience Activation')
+  description: str(max=1000)
+---
+data_dictionary:
+  featured:
+    database: str()
+    objects: list(include('data_dictionary_object'))
