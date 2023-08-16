@@ -2,25 +2,25 @@
 title: str(max=110)
 subtitle: str(max=110, required=False)
 description: str(max=7500)
-custom_contact: str(required=False)
+custom_contact: regex('[^@]+@[^@]+\.[^@]+', required=False, name='valid email address')
 profile: str(required=False)
 terms_of_service: include('terms_of_service')
 auto_fulfillment: include('auto_fulfillment', required=False)
 targets: include('targets')
-usage_examples: list(include('usage_example'), required=False)
+usage_examples: list(include('usage_example'), required=False, max=10)
 data_dictionary: include('data_dictionary', required=False)
-business_needs: list(include('business_need'), required=False)
+business_needs: list(include('business_need'), required=False, max=6)
 ---
 terms_of_service:
   type: enum('STANDARD', 'CUSTOM', 'OFFLINE')
-  link: str(required=False)
+  link: regex('^(https?://([\w-]+(\.[\w-]+)+\.?)(:\d+)?(/\S*)?)$', required=False, name='valid URL')
 ---
 auto_fulfillment:
-  refresh_schedule: str()
+  refresh_schedule: regex('^[0-9]+\sMINUTE$', name='<num> MINUTE')
   refresh_type: enum('FULL_DATABASE', 'SUB_DATABASE')
 ---
 targets:
-  accounts: list(str())
+  accounts: list(regex('^[a-zA-Z0-9]+\.[a-zA-Z0-9]+$', name='OrgName.AccountName'), max=100)
 ---
 usage_example:
   title: str(max=110)
@@ -39,4 +39,4 @@ business_need:
 data_dictionary:
   featured:
     database: str()
-    objects: list(include('data_dictionary_object'))
+    objects: list(include('data_dictionary_object'), max=5)
